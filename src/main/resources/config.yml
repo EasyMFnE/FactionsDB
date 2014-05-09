@@ -1,0 +1,44 @@
+###########################################################
+# This file is part of the FactionsDB plugin by EasyMFnE. #
+###########################################################
+
+# Use UUIDs to track bans instead of player name (def: true)
+uuid-mode: true
+
+# Save bans at shutdown, load at startup (def: false)
+persistence: false
+
+power:
+  # Power level that causes a deathban (default: 0)
+  threshold: 0.5
+  # Boost in power level when returning from deathban (default: 4)
+  boost: 3.5
+
+ban:
+  # Broadcast deathbans to the server (default: true)
+  broadcast: true
+  # Length of ban in format: "<#[.#]><s|m|h|d>" (default: 1h)
+  duration: 0.5h
+  # Send banned player to spawn for safety (default: true)
+  send-to-spawn: true
+  # World to use for spawn lookup. Leave blank to use player's world.
+  spawn-world: world
+
+#########################
+# Uses '&' color codes. #
+# Formatting tags:      #
+# {0} = Player name     # %1$s
+# {1} = Ban duration    # %2$s
+# {2} = Power threshold # %3$f
+# {3} = Time left       # %4$s
+# {4} = Power boost     # %5$f
+#########################
+strings:
+  # Message to send to player as they are banned
+  kick: "&cYou have been banned &7{1}&c for reaching &7{2}&c power!"
+  # Message to send to players when they fail to log in
+  login: "&cYou were banned for reaching {2} power.\n\n&cCome back in &7{3}&c."
+  # Message to send to the server upon a ban
+  broadcast: "&c{0}&c has been banned {1} for reaching {2} power!"
+  # Message to send to player returning from deathban
+  return: "&aWelcome back, &e{0}&a. Your power has been increased by &e{4}&a."

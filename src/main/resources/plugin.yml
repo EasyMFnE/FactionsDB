@@ -1,0 +1,35 @@
+name: FactionsDB
+version: '1.0'
+description: Temporarily deathban players whose Factions power drops below a set threshold.
+
+author: EasyMFnE
+
+database: false
+main: net.easymfne.factionsdb.FactionsDB
+load: STARTUP
+depend: [Factions]
+
+commands:
+  factionsdb:
+    aliases: [fdb]
+    description: FactionsDB administrative command
+    permission: factionsdb.command.factionsdb
+    permission-message: 'Unknown command. Type "/help" for help.'
+    usage: |
+           /factionsdb list - List currently active DeathBans
+           /factionsdb pardon <name|*>... - Pardon player(s)
+           /factionsdb reload - Reload configuration from disk
+
+permissions:
+  factionsdb.admin:
+    default: op
+    description: Grants all admin permissions
+    children:
+      factionsdb.command.factionsdb: true
+      factionsdb.ban.exempt: true
+
+  factionsdb.defaults:
+    default: true
+    description: Default user permissions
+    children:
+      factionsdb.ban.exempt: false
